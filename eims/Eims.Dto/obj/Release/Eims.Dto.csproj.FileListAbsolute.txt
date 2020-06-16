@@ -1,0 +1,10 @@
+C:\Users\sfj\Desktop\新建文件夹\Eims6_12\Eims.Dto\bin\Release\Eims.Dto.dll
+C:\Users\sfj\Desktop\新建文件夹\Eims6_12\Eims.Dto\bin\Release\Eims.Dto.pdb
+C:\Users\sfj\Desktop\新建文件夹\Eims6_12\Eims.Dto\obj\Release\Eims.Dto.csprojAssemblyReference.cache
+C:\Users\sfj\Desktop\新建文件夹\Eims6_12\Eims.Dto\obj\Release\Eims.Dto.dll
+C:\Users\sfj\Desktop\新建文件夹\Eims6_12\Eims.Dto\obj\Release\Eims.Dto.pdb
+C:\Users\sfj\Desktop\Eims6_12\Eims.Dto\bin\Release\Eims.Dto.dll
+C:\Users\sfj\Desktop\Eims6_12\Eims.Dto\bin\Release\Eims.Dto.pdb
+C:\Users\sfj\Desktop\Eims6_12\Eims.Dto\obj\Release\Eims.Dto.csprojAssemblyReference.cache
+C:\Users\sfj\Desktop\Eims6_12\Eims.Dto\obj\Release\Eims.Dto.dll
+C:\Users\sfj\Desktop\Eims6_12\Eims.Dto\obj\Release\Eims.Dto.pdb
