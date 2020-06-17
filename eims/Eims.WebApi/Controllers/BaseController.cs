@@ -14,6 +14,7 @@ namespace Eims.WebApi.Controllers
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="M"></typeparam>
+    [WebApiExceptionFilter]
     [MainAuth(RoleValidation = true)]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BaseController<T, M> : ApiController where M : IBaseManager<T>
