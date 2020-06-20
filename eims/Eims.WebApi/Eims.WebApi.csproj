@@ -129,6 +129,7 @@
     </Compile>
     <Compile Include="Models\Auth\UserIdentity.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\PaginationViewModel.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

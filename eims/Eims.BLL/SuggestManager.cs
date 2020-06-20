@@ -108,5 +108,15 @@ namespace Eims.BLL
                 Title = m.Title
             }).ToListAsync();
         }
+
+        public async Task<int> _getRowCount(string key = null)
+        {
+            IQueryable<Models.Suggest> query;
+            if (key != null && key != "")
+                query = suggestService.GetAll().Where(m => m.Title.Contains(key) || m.Content.Contains(key));
+            else
+                query = suggestService.GetAll();
+            return await query.CountAsync();
+        }
     }
 }

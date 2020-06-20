@@ -157,5 +157,15 @@ namespace Eims.BLL
                 WorkingState = staff.WorkingState
             };
         }
+
+        public async Task<int> _getRowCount(string key = null)
+        {
+            IQueryable<Models.Staff> query;
+            if (key != null && key != "")
+                query = staffService.GetAll().Where(m => m.Name.Contains(key) || m.IDcard == key);
+            else
+                query = staffService.GetAll();
+            return await query.CountAsync();
+        }
     }
 }

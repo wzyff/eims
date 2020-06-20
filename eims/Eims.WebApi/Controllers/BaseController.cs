@@ -1,5 +1,6 @@
 ﻿using Eims.IBLL;
 using Eims.WebApi.Filter;
+using Eims.WebApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -27,9 +28,15 @@ namespace Eims.WebApi.Controllers
             return await manager._del(id);
         }
 
-        public async Task<List<T>> Get(int pageIndex, string key = null)
+        public async Task<PaginationViewModel<T>> Get(int pageSize, int pageIndex, string key = null)
         {
-            return await manager._getPage(10, pageIndex, key);
+            int rowCount = await manager._getRowCount(key);
+            return new PaginationViewModel<T>()
+            {
+                PageIndex = pageIndex,
+                RowCount = rowCount,
+                RowList = await manager._getPage(pageSize, pageIndex, key)
+            };
         }
 
         public async Task<T> Get(int id)

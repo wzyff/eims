@@ -121,5 +121,15 @@ namespace Eims.BLL
                 Times = m.Times
             }).ToListAsync();
         }
+
+        public async Task<int> _getRowCount(string key = null)
+        {
+            IQueryable<Models.Wage> query;
+            if (key != null && key != "")
+                query = wageService.GetAll().Where(m => m.AttendanceName.Contains(key));
+            else
+                query = wageService.GetAll();
+            return await query.CountAsync();
+        }
     }
 }

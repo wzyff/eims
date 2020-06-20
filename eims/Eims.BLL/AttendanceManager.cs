@@ -79,5 +79,15 @@ namespace Eims.BLL
                 Remarks = attendance.Remarks
             };
         }
+
+        public async Task<int> _getRowCount(string key = null)
+        {
+            IQueryable<Models.Attendance> query;
+            if (key != null && key != "")
+                query = attendanceService.GetAll().Where(m => m.Name.Contains(key));
+            else
+                query = attendanceService.GetAll();
+            return await query.CountAsync();
+        }
     }
 }

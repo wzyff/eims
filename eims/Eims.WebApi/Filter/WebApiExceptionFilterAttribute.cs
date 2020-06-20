@@ -16,7 +16,7 @@ namespace Eims.WebApi.Filter
         {
             //1.异常日志记录（正式项目里面一般是用log4net记录异常日志）
             LogTools.WriteException(Environment.NewLine + Environment.NewLine + "↓↓↓↓↓↓↓↓" + DateTime.Now.ToString()+ "↓↓↓↓↓↓↓↓" + Environment.NewLine + actionExecutedContext.Exception.ToString());
-/*
+
             //2.返回调用方具体的异常信息
             if (actionExecutedContext.Exception is NotImplementedException)
             {
@@ -30,7 +30,7 @@ namespace Eims.WebApi.Filter
             else
             {
                 actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
-            }*/
+            }
 
             base.OnException(actionExecutedContext);
         }
