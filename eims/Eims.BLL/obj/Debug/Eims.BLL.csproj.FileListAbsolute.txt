@@ -259,9 +259,6 @@ C:\Users\sfj\Desktop\test\eims\Eims.BLL\obj\Debug\Eims.BLL.csprojAssemblyReferen
 C:\Users\sfj\Desktop\test\eims\Eims.BLL\obj\Debug\Eims.BLL.csproj.CopyComplete
 C:\Users\sfj\Desktop\test\eims\Eims.BLL\obj\Debug\Eims.BLL.dll
 C:\Users\sfj\Desktop\test\eims\Eims.BLL\obj\Debug\Eims.BLL.pdb
-D:\__当前工作夹\gitee\eims\Eims.BLL\obj\Debug\Eims.BLL.csprojAssemblyReference.cache
-D:\__当前工作夹\gitee\eims\Eims.BLL\obj\Debug\Eims.BLL.dll
-D:\__当前工作夹\gitee\eims\Eims.BLL\obj\Debug\Eims.BLL.pdb
 D:\__当前工作夹\gitee\eims\Eims.BLL\bin\Debug\Eims.BLL.dll.config
 D:\__当前工作夹\gitee\eims\Eims.BLL\bin\Debug\Eims.BLL.dll
 D:\__当前工作夹\gitee\eims\Eims.BLL\bin\Debug\Eims.BLL.pdb
@@ -287,4 +284,7 @@ D:\__当前工作夹\gitee\eims\Eims.BLL\bin\Debug\Unity.Abstractions.pdb
 D:\__当前工作夹\gitee\eims\Eims.BLL\bin\Debug\Unity.Container.pdb
 D:\__当前工作夹\gitee\eims\Eims.BLL\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\__当前工作夹\gitee\eims\Eims.BLL\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\__当前工作夹\gitee\eims\Eims.BLL\obj\Debug\Eims.BLL.csprojAssemblyReference.cache
 D:\__当前工作夹\gitee\eims\Eims.BLL\obj\Debug\Eims.BLL.csproj.CopyComplete
+D:\__当前工作夹\gitee\eims\Eims.BLL\obj\Debug\Eims.BLL.dll
+D:\__当前工作夹\gitee\eims\Eims.BLL\obj\Debug\Eims.BLL.pdb

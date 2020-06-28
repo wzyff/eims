@@ -277,9 +277,6 @@ C:\Users\sfj\Desktop\test\eims\Eims.Core\obj\Debug\Eims.Core.csprojAssemblyRefer
 C:\Users\sfj\Desktop\test\eims\Eims.Core\obj\Debug\Eims.Core.csproj.CopyComplete
 C:\Users\sfj\Desktop\test\eims\Eims.Core\obj\Debug\Eims.Core.dll
 C:\Users\sfj\Desktop\test\eims\Eims.Core\obj\Debug\Eims.Core.pdb
-D:\__当前工作夹\gitee\eims\Eims.Core\obj\Debug\Eims.Core.csprojAssemblyReference.cache
-D:\__当前工作夹\gitee\eims\Eims.Core\obj\Debug\Eims.Core.dll
-D:\__当前工作夹\gitee\eims\Eims.Core\obj\Debug\Eims.Core.pdb
 D:\__当前工作夹\gitee\eims\Eims.Core\bin\Debug\Eims.Core.dll
 D:\__当前工作夹\gitee\eims\Eims.Core\bin\Debug\Eims.Core.pdb
 D:\__当前工作夹\gitee\eims\Eims.Core\bin\Debug\Eims.BLL.dll
@@ -307,4 +304,7 @@ D:\__当前工作夹\gitee\eims\Eims.Core\bin\Debug\Eims.Models.pdb
 D:\__当前工作夹\gitee\eims\Eims.Core\bin\Debug\Eims.Models.dll.config
 D:\__当前工作夹\gitee\eims\Eims.Core\bin\Debug\EntityFramework.xml
 D:\__当前工作夹\gitee\eims\Eims.Core\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\__当前工作夹\gitee\eims\Eims.Core\obj\Debug\Eims.Core.csprojAssemblyReference.cache
 D:\__当前工作夹\gitee\eims\Eims.Core\obj\Debug\Eims.Core.csproj.CopyComplete
+D:\__当前工作夹\gitee\eims\Eims.Core\obj\Debug\Eims.Core.dll
+D:\__当前工作夹\gitee\eims\Eims.Core\obj\Debug\Eims.Core.pdb
