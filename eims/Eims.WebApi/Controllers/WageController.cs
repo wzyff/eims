@@ -1,5 +1,6 @@
 ﻿using Eims.BLL;
 using Eims.Dto;
+using Eims.WebApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -11,15 +12,15 @@ namespace Eims.WebApi.Controllers
     {
         [Route("{staffId}/fkey")]
         [HttpGet]
-        public async Task<List<WageDto>> GetWagesByStaffId(int staffId)
+        public async Task<Result> GetWagesByStaffId(int staffId)
         {
-            return await manager._getPageByStaffId(staffId);
+            return Result.Success(await manager._getPageByStaffId(staffId));
         }
         [Route("{staffId}/payroll")]
         [HttpGet]
-        public async Task<List<PayrollDto>> GetPayrollByStaffId(int staffId)
+        public async Task<Result> GetPayrollByStaffId(int staffId)
         {
-            return await manager._getPayrollByStaffId(staffId);
+            return Result.Success(await manager._getPayrollByStaffId(staffId));
         }
     }
 }

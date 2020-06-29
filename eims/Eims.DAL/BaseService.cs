@@ -21,7 +21,7 @@ namespace Eims.DAL
             _db.Configuration.ValidateOnSaveEnabled = false;
             _db.Set<T>().Add(model);
             if (saved) return await Save();
-            else return -1;//-2，-1，0，>0
+            else return -1;
         }
 
         public async Task<int> DeleteAsync(int id, bool saved = true)
@@ -50,7 +50,7 @@ namespace Eims.DAL
                 _db.Configuration.ValidateOnSaveEnabled = true;
                 return i;
             }
-            catch { return -2; }
+            catch { return -101; }
         }
 
         public IQueryable<T> GetAll()

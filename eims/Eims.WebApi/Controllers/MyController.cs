@@ -1,6 +1,7 @@
 ﻿using Eims.Dto;
 using Eims.IBLL;
 using Eims.WebApi.Filter;
+using Eims.WebApi.Models;
 using Eims.WebApi.Models.Auth;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -24,47 +25,47 @@ namespace Eims.WebApi.Controllers
         public ISuggestManager suggestManager { get; set; }
 
         [HttpGet, Route("payroll")]
-        public async Task<List<PayrollDto>> Payroll()
+        public async Task<Result> Payroll()
         {
             UserIdentity my = (UserIdentity)User.Identity;
-            return await wageManager._getPayrollByStaffId(my.Id);
+            return Result.Success(await wageManager._getPayrollByStaffId(my.Id));
         }
 
         [HttpGet, Route("wage")]
-        public async Task<List<WageDto>> Wage()
+        public async Task<Result> Wage()
         {
             UserIdentity my = (UserIdentity)User.Identity;
-            return await wageManager._getPageByStaffId(my.Id);
+            return Result.Success(await wageManager._getPageByStaffId(my.Id));
         }
 
-        [HttpGet, Route("Info")]
-        public async Task<StaffDto> Info()
+        [HttpGet, Route("info")]
+        public async Task<Result> Info()
         {
             UserIdentity my = (UserIdentity)User.Identity;
-            return await staffManager._getOne(my.Id);
+            return Result.Success(await staffManager._getOne(my.Id));
         }
 
-        [HttpPost, Route("InfoEdit")]
-        public async Task<int> InfoEdit(StaffDto model)
+        [HttpGet, Route("suggest")]
+        public async Task<Result> Suggest()
+        {
+            UserIdentity my = (UserIdentity)User.Identity;
+            return Result.Success(await suggestManager._getPageByStaffId(my.Id));
+        }
+
+        [HttpPut, Route("editinfo")]
+        public async Task<Result> EditInfo([FromBody]StaffDto model)
         {
             UserIdentity my = (UserIdentity)User.Identity;
             model.Id = my.Id;
-            return await staffManager._edit(model);
+            return Result.Success(await staffManager._edit(model));
         }
 
-        [HttpGet, Route("Suggest")]
-        public async Task<List<SuggestDto>> Suggest()
-        {
-            UserIdentity my = (UserIdentity)User.Identity;
-            return await suggestManager._getPageByStaffId(my.Id);
-        }
-
-        [HttpPost, Route("SuggestAdd")]
-        public async Task<int> SuggesrAdd(SuggestDto model)
+        [HttpPost, Route("addsuggest")]
+        public async Task<Result> AddSuggesr([FromBody]SuggestDto model)
         {
             UserIdentity my = (UserIdentity)User.Identity;
             model.StaffId = my.Id;
-            return await suggestManager._add(model);
+            return Result.Success(await suggestManager._add(model));
         }
     }
 }

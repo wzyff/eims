@@ -25,7 +25,7 @@ namespace Eims.WebApi.Controllers
         /// <param name="model"></param>
         /// <returns>token</returns>
         [Route("login"), HttpPost]
-        public async Task<Result> login(LoginViewModel model)
+        public async Task<Result> login([FromBody]LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
