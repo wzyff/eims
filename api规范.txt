@@ -1,0 +1,22 @@
+管理员操作：有效token，且有管理员权限
+查询所有		get* 		api/{tname}
+主键id查询 		get* 		api/{tname}/{pkid}
+分页查询 		get* 		api/{tname}?{pageSize}&{pageIndex}&{key}
+删除 			delete*		api/{tname}/{pkid}
+添加 			post*		api/{tname}
+修改			put* 		api/{tname}
+外键id查询		get 		api/{tname}/{fkid}/fkey
+分页联表查询 		get 		api/{tname}/{tname2}?{pageSize}&{pageIndex}&{key}
+
+个人操作：有效token，且用它来代替自己的id
+分页查询自己的所有奖惩	get 		api/private/wages
+查看自己的工资单 	get 		api/private/payroll
+查看自己的所有反馈 	get		api/private/suggest
+查看自己的信息 		get 		api/private/info
+修改自己的信息		put 		api/private/editinfo
+提交反馈 		post 		api/private/suggest
+
+公共操作：
+登录			post		api/public/login
+分页查看新闻		get		api/public/article
+分页查看反馈		get 		api/public/suggest
