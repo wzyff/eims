@@ -14,6 +14,8 @@ namespace Eims.BLL
     {
         [Dependency]
         public IWageService wageService { get; set; }
+        [Dependency]
+        public IStaffService StaffService { get; set; }
 
         public async Task<int> _add(WageDto model)
         {
@@ -130,6 +132,27 @@ namespace Eims.BLL
             else
                 query = wageService.GetAll();
             return await query.CountAsync();
+        }
+
+        public async Task<List<WageWithStaffDto>> _getPageWageWithStaff(int pageSize, int pageIndex, string key)
+        {
+            IQueryable<Models.Wage> wages;
+            if (key != null && key != "")
+                wages = wageService.GetAll().Where(m => m.AttendanceName.Contains(key));
+            else
+                wages = wageService.GetAll();
+            IQueryable<Models.Staff> staffs = StaffService.GetAll();
+            return await wages.OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new WageWithStaffDto()
+            {
+                AttendanceMoney = a.AttendanceMoney,
+                Id = a.Id,
+                AttendanceName = a.AttendanceName,
+                Remark = a.Remark,
+                StaffId = a.StaffId,
+                Time = a.Time,
+                Times = a.Times,
+                Staff_Name = b.Name
+            }).ToListAsync();
         }
     }
 }

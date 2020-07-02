@@ -14,6 +14,8 @@ namespace Eims.BLL
     {
         [Dependency]
         public IArticleService articleService { get; set; }
+        [Dependency]
+        public IStaffService staffService { get; set; }
 
         public async Task<int> _add(ArticleDto article)
         {
@@ -76,7 +78,7 @@ namespace Eims.BLL
                 query = articleService.GetAll().Where(m => m.Title.Contains(key));
             else
                 query = articleService.GetAll();
-            return await query.OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new ArticleDto()
+            return await query.OrderBy(m => m.CreateTime).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new ArticleDto()
             {
                 Id = m.Id,
                 Content = m.Content,
@@ -94,6 +96,25 @@ namespace Eims.BLL
             else
                 query = articleService.GetAll();
             return await query.CountAsync();
+        }
+
+        public async Task<List<ArticleWithStaffDto>> _getPageArticleWithStaff(int pageSize, int pageIndex, string key)
+        {
+            IQueryable<Models.Article> articles;
+            if (key != null && key != "")
+                articles = articleService.GetAll().Where(m => m.Title.Contains(key));
+            else
+                articles = articleService.GetAll();
+            IQueryable<Models.Staff> staffs = staffService.GetAll();
+            return await articles.OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new ArticleWithStaffDto()
+            {
+                Id = a.Id,
+                StaffId = a.StaffId,
+                Content = a.Content,
+                CreateTime = a.CreateTime,
+                Title = a.Title,
+                Staff_Name = b.Name
+            }).ToListAsync();
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using Eims.IBLL;
 using Eims.WebApi.Filter;
 using Eims.WebApi.Models;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using Unity;
 
 namespace Eims.WebApi.Controllers
@@ -17,7 +15,6 @@ namespace Eims.WebApi.Controllers
     /// <typeparam name="M"></typeparam>
     [WebApiExceptionFilter]
     [MainAuth(RoleValidation = true)]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BaseController<T, M> : ApiController where M : IBaseManager<T>
     {
         [Dependency]
@@ -49,12 +46,12 @@ namespace Eims.WebApi.Controllers
             return Result.Success(await manager._getAll());
         }
 
-        public async Task<Result> Post([FromBody] T model)
+        public async Task<Result> Post(T model)
         {
             return Result.Success(await manager._add(model));
         }
 
-        public async Task<Result> Put([FromBody] T model)
+        public async Task<Result> Put(T model)
         {
             return Result.Success(await manager._edit(model));
         }

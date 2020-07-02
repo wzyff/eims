@@ -116,8 +116,8 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\MainController.cs" />
-    <Compile Include="Controllers\MyController.cs" />
+    <Compile Include="Controllers\PublicController.cs" />
+    <Compile Include="Controllers\PrivateController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\SuggestController.cs" />
     <Compile Include="Controllers\WageController.cs" />

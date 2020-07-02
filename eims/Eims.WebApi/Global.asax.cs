@@ -7,7 +7,6 @@ namespace Eims.WebApi
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            //注入
             UnityConfig.RegisterComponents();
         }
     }

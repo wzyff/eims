@@ -10,6 +10,8 @@ namespace Eims.WebApi
             config.EnableCors();
             // Web API 路由
             config.MapHttpAttributeRoutes();
+            // Cors
+            config.EnableCors();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

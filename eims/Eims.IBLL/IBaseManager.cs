@@ -6,7 +6,7 @@ namespace Eims.IBLL
     public interface IBaseManager<T>
     {
         Task<T> _getOne(int id);
-        Task<List<T>> _getPage(int pageSize = 10, int pageIndex = 0, string key = null);
+        Task<List<T>> _getPage(int pageSize, int pageIndex, string key);
         Task<List<T>> _getAll();
         Task<int> _getRowCount(string key = null);
         Task<int> _add(T model);
