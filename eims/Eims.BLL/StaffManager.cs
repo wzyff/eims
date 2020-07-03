@@ -68,9 +68,14 @@ namespace Eims.BLL
             });
         }
 
-        public async Task<List<StaffDto>> _getAll()
+        public async Task<List<StaffDto>> _getAll(string key)
         {
-            return await staffService.GetAll().Select(m => new StaffDto()
+            IQueryable<Models.Staff> query;
+            if (key != null && key != "")
+                query = staffService.GetAll().Where(m => m.Name.Contains(key) || m.IDcard == key);
+            else
+                query = staffService.GetAll();
+            return await query.Select(m => new StaffDto()
             {
                 Address = m.Address,
                 Birthday = m.Birthday,
@@ -166,6 +171,34 @@ namespace Eims.BLL
             else
                 query = staffService.GetAll();
             return await query.CountAsync();
+        }
+
+        public async Task<int> _add(List<StaffDto> models)
+        {
+            foreach (StaffDto model in models)
+            {
+                await staffService.InsertAsync(new Staff()
+                {
+                    Address = model.Address,
+                    Birthday = model.Birthday,
+                    EducationLevel = model.EducationLevel,
+                    Email = model.Email,
+                    GraduatedSchool = model.GraduatedSchool,
+                    HealthStatus = model.HealthStatus,
+                    Hometown = model.Hometown,
+                    Id = model.Id,
+                    IDcard = model.IDcard,
+                    MaritalStatus = model.MaritalStatus,
+                    Name = model.Name,
+                    Password = model.Password,
+                    Phone = model.Phone,
+                    RoleId = model.RoleId,
+                    PoliticalStatus = model.PoliticalStatus,
+                    Sex = model.Sex,
+                    WorkingState = model.WorkingState
+                }, false);
+            }
+            return await staffService.Save();
         }
     }
 }

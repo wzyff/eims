@@ -13,7 +13,7 @@ namespace Eims.WebApi.Controllers
         [Route("{staffId}/fkey"), HttpGet]
         public async Task<Result> GetSuggestByStaffId(int staffId)
         {
-            return Result.Success(await manager._getPageByStaffId(staffId));
+            return Result.Success(await manager._getPageByStaffId(10,0,staffId));
         }
 
         [Route("staff"), HttpGet]

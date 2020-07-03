@@ -50,9 +50,14 @@ namespace Eims.BLL
             });
         }
 
-        public async Task<List<WageDto>> _getAll()
+        public async Task<List<WageDto>> _getAll(string key)
         {
-            return await wageService.GetAll().Select(m => new WageDto()
+            IQueryable<Models.Wage> query;
+            if (key != null && key != "")
+                query = wageService.GetAll().Where(m => m.AttendanceName.Contains(key));
+            else
+                query = wageService.GetAll();
+            return await query.Select(m => new WageDto()
             {
                 AttendanceMoney = m.AttendanceMoney,
                 Id = m.Id,
@@ -153,6 +158,24 @@ namespace Eims.BLL
                 Times = a.Times,
                 Staff_Name = b.Name
             }).ToListAsync();
+        }
+
+        public async Task<int> _add(List<WageDto> models)
+        {
+            foreach (WageDto model in models)
+            {
+                await wageService.InsertAsync(new Wage()
+                {
+                    AttendanceMoney = model.AttendanceMoney,
+                    Id = model.Id,
+                    AttendanceName = model.AttendanceName,
+                    Remark = model.Remark,
+                    StaffId = model.StaffId,
+                    Time = model.Time,
+                    Times = model.Times
+                }, false);
+            }
+            return await wageService.Save();
         }
     }
 }

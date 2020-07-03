@@ -6,7 +6,19 @@ namespace Eims.IBLL
 {
     public interface IWageManager : IBaseManager<WageDto>
     {
-        Task<List<WageDto>> _getPageByStaffId(int staffId, int pageSize = 10, int pageIndex = 0);
+        /// <summary>
+        /// 外键分页查询
+        /// </summary>
+        /// <param name="staffId">staffid</param>
+        /// <param name="pageSize">页行数</param>
+        /// <param name="pageIndex">页码</param>
+        /// <returns></returns>
+        Task<List<WageDto>> _getPageByStaffId( int pageSize, int pageIndex, int staffId);
+        /// <summary>
+        /// 获取历史总工资单
+        /// </summary>
+        /// <param name="staffId">staff</param>
+        /// <returns></returns>
         Task<List<PayrollDto>> _getPayrollByStaffId(int staffId);
     }
 }

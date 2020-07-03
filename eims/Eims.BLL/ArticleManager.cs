@@ -46,9 +46,14 @@ namespace Eims.BLL
             });
         }
 
-        public async Task<List<ArticleDto>> _getAll()
+        public async Task<List<ArticleDto>> _getAll(string key)
         {
-            return await articleService.GetAll().Select(m => new ArticleDto()
+            IQueryable<Models.Article> query;
+            if (key != null && key != "")
+                query = articleService.GetAll().Where(m => m.Title.Contains(key));
+            else
+                query = articleService.GetAll();
+            return await query.Select(m => new ArticleDto()
             {
                 Id = m.Id,
                 Content = m.Content,
@@ -98,7 +103,7 @@ namespace Eims.BLL
             return await query.CountAsync();
         }
 
-        public async Task<List<ArticleWithStaffDto>> _getPageArticleWithStaff(int pageSize, int pageIndex, string key)
+        public async Task<List<ArticleWithStaffDto>> _getPageArticleWithStaff(int pageSize, int pageIndex, string key=null)
         {
             IQueryable<Models.Article> articles;
             if (key != null && key != "")
@@ -115,6 +120,22 @@ namespace Eims.BLL
                 Title = a.Title,
                 Staff_Name = b.Name
             }).ToListAsync();
+        }
+
+        public async Task<int> _add(List<ArticleDto> models)
+        {
+            foreach (ArticleDto model in models)
+            {
+                await articleService.InsertAsync(new Article()
+                {
+                    Content = model.Content,
+                    CreateTime = model.CreateTime,
+                    Id = model.Id,
+                    StaffId = model.StaffId,
+                    Title = model.Title
+                }, false);
+            }
+            return await articleService.Save();
         }
     }
 }

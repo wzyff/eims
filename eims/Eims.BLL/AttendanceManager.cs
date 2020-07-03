@@ -15,9 +15,14 @@ namespace Eims.BLL
         [Dependency]
         public IAttendanceService attendanceService { get; set; }
 
-        public async Task<List<AttendanceDto>> _getAll()
+        public async Task<List<AttendanceDto>> _getAll(string key)
         {
-            return await attendanceService.GetAll().Select(m => new AttendanceDto()
+            IQueryable<Models.Attendance> query;
+            if (key != null && key != "")
+                query = attendanceService.GetAll().Where(m => m.Name.Contains(key));
+            else
+                query = attendanceService.GetAll();
+            return await query.Select(m => new AttendanceDto()
             {
                 Id = m.Id,
                 Name = m.Name,
@@ -88,6 +93,20 @@ namespace Eims.BLL
             else
                 query = attendanceService.GetAll();
             return await query.CountAsync();
+        }
+
+        public async Task<int> _add(List<AttendanceDto> models)
+        {
+            foreach (AttendanceDto model in models)
+            {
+                await attendanceService.InsertAsync(new Attendance()
+                {
+                    Money = model.Money,
+                    Name = model.Name,
+                    Remarks = model.Remarks
+                }, false);
+            }
+            return await attendanceService.Save();
         }
     }
 }

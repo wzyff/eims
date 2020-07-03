@@ -49,9 +49,14 @@ namespace Eims.BLL
             });
         }
 
-        public async Task<List<SuggestDto>> _getAll()
+        public async Task<List<SuggestDto>> _getAll(string key)
         {
-            return await suggestService.GetAll().Select(m => new SuggestDto()
+            IQueryable<Models.Suggest> query;
+            if (key != null && key != "")
+                query = suggestService.GetAll().Where(m => m.Title.Contains(key) || m.Content.Contains(key));
+            else
+                query = suggestService.GetAll();
+            return await query.Select(m => new SuggestDto()
             {
                 Content = m.Content,
                 Id = m.Id,
@@ -121,7 +126,7 @@ namespace Eims.BLL
             return await query.CountAsync();
         }
 
-        public async Task<List<SuggestWithStaffDto>> _getPageSuggestWithStaff(int pageSize, int pageIndex, string key)
+        public async Task<List<SuggestWithStaffDto>> _getPageSuggestWithStaff(int pageSize, int pageIndex, string key=null)
         {
             IQueryable<Models.Suggest> suggests;
             if (key != null && key != "")
@@ -140,6 +145,24 @@ namespace Eims.BLL
                 SuggestTime = a.SuggestTime,
                 Staff_Name = b.Name
             }).ToListAsync();
+        }
+
+        public async Task<int> _add(List<SuggestDto> models)
+        {
+            foreach (SuggestDto model in models)
+            {
+                await suggestService.InsertAsync(new Suggest()
+                {
+                    Content = model.Content,
+                    Id = model.Id,
+                    Reply = model.Reply,
+                    ReplyTime = model.ReplyTime,
+                    StaffId = model.StaffId,
+                    SuggestTime = model.SuggestTime,
+                    Title = model.Title
+                }, false);
+            }
+            return await suggestService.Save();
         }
     }
 }

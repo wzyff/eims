@@ -1,6 +1,7 @@
 ﻿using Eims.BLL;
 using Eims.Dto;
 using Eims.WebApi.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -24,6 +25,12 @@ namespace Eims.WebApi.Controllers
         public async Task<Result> WithStaff(int pageSize, int pageIndex, string key)
         {
             return Result.Success(await manager._getPageWageWithStaff(pageSize, pageIndex, key));
+        }
+
+        [Route("addlist"), HttpGet]
+        public async Task<Result> Addlist(List<WageDto> wages)
+        {
+            return Result.Success(await manager._add(wages));
         }
     }
 }

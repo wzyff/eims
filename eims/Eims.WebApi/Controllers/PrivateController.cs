@@ -34,7 +34,7 @@ namespace Eims.WebApi.Controllers
         public async Task<Result> Wages()
         {
             UserIdentity my = (UserIdentity)User.Identity;
-            return Result.Success(await wageManager._getPageByStaffId(my.Id));
+            return Result.Success(await wageManager._getPageByStaffId(10, 0, my.Id));
         }
 
         [HttpGet, Route("info")]
@@ -48,7 +48,7 @@ namespace Eims.WebApi.Controllers
         public async Task<Result> Suggests()
         {
             UserIdentity my = (UserIdentity)User.Identity;
-            return Result.Success(await suggestManager._getPageByStaffId(my.Id));
+            return Result.Success(await suggestManager._getPageByStaffId(10, 0, my.Id));
         }
 
         [HttpPut, Route("editinfo")]
