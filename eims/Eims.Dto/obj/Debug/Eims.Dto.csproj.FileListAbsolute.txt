@@ -33,3 +33,7 @@ C:\Users\sfj\Desktop\test\eims\Eims.Dto\bin\Debug\Eims.Dto.pdb
 C:\Users\sfj\Desktop\test\eims\Eims.Dto\obj\Debug\Eims.Dto.csprojAssemblyReference.cache
 C:\Users\sfj\Desktop\test\eims\Eims.Dto\obj\Debug\Eims.Dto.dll
 C:\Users\sfj\Desktop\test\eims\Eims.Dto\obj\Debug\Eims.Dto.pdb
+D:\__当前工作夹\gitee\eims\Eims.Dto\bin\Debug\Eims.Dto.dll
+D:\__当前工作夹\gitee\eims\Eims.Dto\bin\Debug\Eims.Dto.pdb
+D:\__当前工作夹\gitee\eims\Eims.Dto\obj\Debug\Eims.Dto.dll
+D:\__当前工作夹\gitee\eims\Eims.Dto\obj\Debug\Eims.Dto.pdb

@@ -98,3 +98,15 @@ C:\Users\sfj\Desktop\test\eims\Eims.Models\obj\Debug\Eims.Models.csprojAssemblyR
 C:\Users\sfj\Desktop\test\eims\Eims.Models\obj\Debug\Eims.Models.csproj.CopyComplete
 C:\Users\sfj\Desktop\test\eims\Eims.Models\obj\Debug\Eims.Models.dll
 C:\Users\sfj\Desktop\test\eims\Eims.Models\obj\Debug\Eims.Models.pdb
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\Eims.Models.dll.config
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\Eims.Models.dll
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\Eims.Models.pdb
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\EntityFramework.dll
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\EntityFramework.xml
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\__当前工作夹\gitee\eims\Eims.Models\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\__当前工作夹\gitee\eims\Eims.Models\obj\Debug\Eims.Models.csproj.CopyComplete
+D:\__当前工作夹\gitee\eims\Eims.Models\obj\Debug\Eims.Models.dll
+D:\__当前工作夹\gitee\eims\Eims.Models\obj\Debug\Eims.Models.pdb

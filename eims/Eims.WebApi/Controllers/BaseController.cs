@@ -9,7 +9,7 @@ using Unity;
 namespace Eims.WebApi.Controllers
 {
     // 必须登录，且是管理员
-    [MainAuth(RoleValidation = true)]
+    [WebApiExceptionFilter, MainAuth(RoleValidation = true)]
     public class BaseController<T, M> : ApiController where M : IBaseManager<T>
     {
         [Dependency]

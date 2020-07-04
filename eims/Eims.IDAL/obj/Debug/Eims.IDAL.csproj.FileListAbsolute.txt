@@ -102,3 +102,16 @@ C:\Users\sfj\Desktop\test\eims\Eims.IDAL\obj\Debug\Eims.IDAL.csprojAssemblyRefer
 C:\Users\sfj\Desktop\test\eims\Eims.IDAL\obj\Debug\Eims.IDAL.csproj.CopyComplete
 C:\Users\sfj\Desktop\test\eims\Eims.IDAL\obj\Debug\Eims.IDAL.dll
 C:\Users\sfj\Desktop\test\eims\Eims.IDAL\obj\Debug\Eims.IDAL.pdb
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\Eims.IDAL.dll.config
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\Eims.IDAL.dll
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\Eims.IDAL.pdb
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\Eims.Models.dll
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\EntityFramework.dll
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\Eims.Models.pdb
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\Eims.Models.dll.config
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\EntityFramework.xml
+D:\__当前工作夹\gitee\eims\Eims.IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\__当前工作夹\gitee\eims\Eims.IDAL\obj\Debug\Eims.IDAL.csprojAssemblyReference.cache
+D:\__当前工作夹\gitee\eims\Eims.IDAL\obj\Debug\Eims.IDAL.csproj.CopyComplete
+D:\__当前工作夹\gitee\eims\Eims.IDAL\obj\Debug\Eims.IDAL.dll
+D:\__当前工作夹\gitee\eims\Eims.IDAL\obj\Debug\Eims.IDAL.pdb
