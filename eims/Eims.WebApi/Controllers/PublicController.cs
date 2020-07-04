@@ -1,6 +1,7 @@
 ﻿using Eims.Dto;
 using Eims.IBLL;
 using Eims.WebApi.Core;
+using Eims.WebApi.Filter;
 using Eims.WebApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ using Unity;
 
 namespace Eims.WebApi.Controllers
 {
-    [RoutePrefix(prefix: "api/public")]
+    //无需登录
+    [WebApiExceptionFilter, RoutePrefix(prefix: "api/public")]
     public class PublicController : ApiController
     {
         [Dependency]
@@ -19,6 +21,11 @@ namespace Eims.WebApi.Controllers
         [Dependency]
         public ISuggestManager suggestManager { get; set; }
 
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("login"), HttpPost]
         public async Task<Result> login([FromBody]LoginViewModel model)
         {
@@ -40,12 +47,26 @@ namespace Eims.WebApi.Controllers
             return Result.Fail("输入不规范");
         }
 
+        /// <summary>
+        /// 分页获取文章
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         [Route("article"), HttpGet]
         public async Task<Result> article(int pageSize, int pageIndex, string key)
         {
             return Result.Success(await articleManager._getPage(pageSize, pageIndex, key));
         }
 
+        /// <summary>
+        /// 公开反馈
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         [Route("suggest"), HttpGet]
         public async Task<Result> suggest(int pageSize, int pageIndex, string key)
         {

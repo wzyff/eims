@@ -10,16 +10,22 @@ namespace Eims.WebApi.Controllers
     [RoutePrefix("api/suggest")]
     public class SuggestController : BaseController<SuggestDto, ISuggestManager>
     {
-        [Route("{staffId}/fkey"), HttpGet]
-        public async Task<Result> GetSuggestByStaffId(int staffId)
-        {
-            return Result.Success(await manager._getPageByStaffId(10,0,staffId));
-        }
-
         [Route("staff"), HttpGet]
         public async Task<Result> WithStaff(int pageSize, int pageIndex, string key)
         {
             return Result.Success(await manager._getPageSuggestWithStaff(pageSize, pageIndex, key));
+        }
+
+        [Route("staff"), HttpGet]
+        public async Task<Result> WithStaff(int pageSize, int pageIndex, int fkid)
+        {
+            return Result.Success(await manager._getPageSuggestWithStaff(pageSize, pageIndex, fkid));
+        }
+
+        [Route("staff/{id}"), HttpGet]
+        public async Task<Result> WithStaff(int id)
+        {
+            return Result.Success(await manager._getOneSuggestWithStaff(id));
         }
     }
 }

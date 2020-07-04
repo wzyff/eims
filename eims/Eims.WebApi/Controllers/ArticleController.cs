@@ -10,10 +10,22 @@ namespace Eims.WebApi.Controllers
     [RoutePrefix("api/article")]
     public class ArticleController : BaseController<ArticleDto, IArticleManager>
     {
-        [Route("staff"),HttpGet]
+        [Route("staff"), HttpGet]
         public async Task<Result> WithStaff(int pageSize, int pageIndex, string key)
         {
             return Result.Success(await manager._getPageArticleWithStaff(pageSize, pageIndex, key));
+        }
+
+        [Route("staff"), HttpGet]
+        public async Task<Result> WithStaff(int pageSize, int pageIndex, int fkid)
+        {
+            return Result.Success(await manager._getPageArticleWithStaff(pageSize, pageIndex, fkid));
+        }
+
+        [Route("staff/{id}"), HttpGet]
+        public async Task<Result> WithStaff(int id)
+        {
+            return Result.Success(await manager._getOneArticleWithStaff(id));
         }
     }
 }
