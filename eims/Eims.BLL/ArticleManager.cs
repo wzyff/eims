@@ -76,14 +76,14 @@ namespace Eims.BLL
             };
         }
 
-        public async Task<List<ArticleDto>> _getPage(int pageSize, int pageIndex, string key)
+        public async Task<List<ArticleDto>> _getPage(int ps, int pi, string key)
         {
             IQueryable<Models.Article> query;
             if (key != null && key != "")
                 query = articleService.GetAll().Where(m => m.Title.Contains(key));
             else
                 query = articleService.GetAll();
-            return await query.OrderBy(m => m.CreateTime).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new ArticleDto()
+            return await query.OrderBy(m => m.CreateTime).Skip(ps * pi).Take(ps).Select(m => new ArticleDto()
             {
                 Id = m.Id,
                 Content = m.Content,
@@ -119,13 +119,13 @@ namespace Eims.BLL
             return await articleService.Save();
         }
 
-        public async Task<List<ArticleWithStaffDto>> _getPageArticleWithStaff(int pageSize, int pageIndex, string key = null)
+        public async Task<List<ArticleWithStaffDto>> _getPageArticleWithStaff(int ps, int pi, string key = null)
         {
             var staffs = await staffService.GetAll().ToListAsync();
             var articles = await articleService.GetAll().ToListAsync();
             if (key != null && key != "")
                 articles = await articleService.GetAll().Where(m => m.Title.Contains(key)).ToListAsync();
-            return articles.AsQueryable().OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new ArticleWithStaffDto()
+            return articles.AsQueryable().OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new ArticleWithStaffDto()
             {
                 Id = a.Id,
                 StaffId = a.StaffId,
@@ -136,11 +136,11 @@ namespace Eims.BLL
             }).ToList();
         }
 
-        public async Task<List<ArticleWithStaffDto>> _getPageArticleWithStaff(int pageSize, int pageIndex, int fkid)
+        public async Task<List<ArticleWithStaffDto>> _getPageArticleWithStaff(int ps, int pi, int fkid)
         {
             var staffs = await staffService.GetAll().ToListAsync();
             var articles = await articleService.GetAll().Where(m => m.StaffId == fkid).ToListAsync();
-            return articles.AsQueryable().OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new ArticleWithStaffDto()
+            return articles.AsQueryable().OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new ArticleWithStaffDto()
             {
                 Id = a.Id,
                 StaffId = a.StaffId,
@@ -154,7 +154,7 @@ namespace Eims.BLL
         public async Task<ArticleWithStaffDto> _getOneArticleWithStaff(int id)
         {
             var staffs = await staffService.GetAll().ToListAsync();
-            var article = await articleService.GetAll().Where(m=>m.Id==id).ToListAsync();
+            var article = await articleService.GetAll().Where(m => m.Id == id).ToListAsync();
             return article.AsQueryable().Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new ArticleWithStaffDto()
             {
                 Id = a.Id,
@@ -163,7 +163,7 @@ namespace Eims.BLL
                 CreateTime = a.CreateTime,
                 Title = a.Title,
                 Staff_Name = b.Name
-            }).FirstOrDefault(); 
+            }).FirstOrDefault();
         }
     }
 }

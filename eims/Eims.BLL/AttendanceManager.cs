@@ -57,14 +57,14 @@ namespace Eims.BLL
             return await attendanceService.DeleteAsync(id);
         }
 
-        public async Task<List<AttendanceDto>> _getPage(int pageSize, int pageIndex, string key)
+        public async Task<List<AttendanceDto>> _getPage(int ps, int pi, string key)
         {
             IQueryable<Models.Attendance> query;
             if (key != null && key != "")
                 query = attendanceService.GetAll().Where(m => m.Name.Contains(key));
             else
                 query = attendanceService.GetAll();
-            return await query.OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new AttendanceDto()
+            return await query.OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Select(m => new AttendanceDto()
             {
                 Id = m.Id,
                 Name = m.Name,

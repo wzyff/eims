@@ -1,7 +1,6 @@
 ﻿using Eims.Dto;
 using Eims.IBLL;
 using Eims.WebApi.Models;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -11,15 +10,15 @@ namespace Eims.WebApi.Controllers
     public class SuggestController : BaseController<SuggestDto, ISuggestManager>
     {
         [Route("staff"), HttpGet]
-        public async Task<Result> WithStaff(int pageSize, int pageIndex, string key)
+        public async Task<Result> WithStaff(int ps, int pi, string key)
         {
-            return Result.Success(await manager._getPageSuggestWithStaff(pageSize, pageIndex, key));
+            return Result.Success(await manager._getPageSuggestWithStaff(ps, pi, key));
         }
 
         [Route("staff"), HttpGet]
-        public async Task<Result> WithStaff(int pageSize, int pageIndex, int fkid)
+        public async Task<Result> WithStaff(int ps, int pi, int fkid)
         {
-            return Result.Success(await manager._getPageSuggestWithStaff(pageSize, pageIndex, fkid));
+            return Result.Success(await manager._getPageSuggestWithStaff(ps, pi, fkid));
         }
 
         [Route("staff/{id}"), HttpGet]

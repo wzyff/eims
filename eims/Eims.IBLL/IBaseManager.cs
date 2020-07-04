@@ -8,11 +8,11 @@ namespace Eims.IBLL
         /// <summary>
         /// 分页查询
         /// </summary>
-        /// <param name="pageSize">页长度</param>
-        /// <param name="pageIndex">页码(从0开始)</param>
+        /// <param name="ps">页长度</param>
+        /// <param name="pi">页码(从0开始)</param>
         /// <param name="key">关键字</param>
         /// <returns></returns>
-        Task<List<T>> _getPage(int pageSize, int pageIndex, string key = null);
+        Task<List<T>> _getPage(int ps, int pi, string key = null);
         /// <summary>
         /// 不分页查询
         /// </summary>

@@ -9,12 +9,12 @@ using Unity;
 namespace Eims.WebApi.Controllers
 {
     // 必须登录，且是管理员
-    [ MainAuth(RoleValidation = true)]
+    [MainAuth(RoleValidation = true)]
     public class BaseController<T, M> : ApiController where M : IBaseManager<T>
     {
         [Dependency]
         public M manager { get; set; }
-        
+
         /// <summary>
         /// 删除一行
         /// </summary>
@@ -28,18 +28,18 @@ namespace Eims.WebApi.Controllers
         /// <summary>
         /// 分页查询获取
         /// </summary>
-        /// <param name="pageSize"></param>
-        /// <param name="pageIndex"></param>
+        /// <param name="ps"></param>
+        /// <param name="pi"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public async Task<Result> Get(int pageSize, int pageIndex, string key = null)
+        public async Task<Result> Get(int ps, int pi, string key = null)
         {
             int rowCount = await manager._getRowCount(key);
             return Result.Success(new PaginationViewModel<T>()
             {
-                PageIndex = pageIndex,
+                pi = pi,
                 RowCount = rowCount,
-                RowList = await manager._getPage(pageSize, pageIndex, key)
+                RowList = await manager._getPage(ps, pi, key)
             });
         }
 

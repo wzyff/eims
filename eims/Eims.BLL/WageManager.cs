@@ -96,14 +96,14 @@ namespace Eims.BLL
             };
         }
 
-        public async Task<List<WageDto>> _getPage(int pageSize, int pageIndex, string key)
+        public async Task<List<WageDto>> _getPage(int ps, int pi, string key)
         {
             IQueryable<Models.Wage> query;
             if (key != null && key != "")
                 query = wageService.GetAll().Where(m => m.AttendanceName.Contains(key));
             else
                 query = wageService.GetAll();
-            return await query.OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new WageDto()
+            return await query.OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Select(m => new WageDto()
             {
                 AttendanceMoney = m.AttendanceMoney,
                 Id = m.Id,
@@ -115,9 +115,9 @@ namespace Eims.BLL
             }).ToListAsync();
         }
 
-        public async Task<List<WageDto>> _getPageByStaffId(int staffId, int pageSize = 10, int pageIndex = 0)
+        public async Task<List<WageDto>> _getPageByStaffId(int staffId, int ps = 10, int pi = 0)
         {
-            return await wageService.GetAll().Where(m => m.StaffId == staffId).OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new WageDto()
+            return await wageService.GetAll().Where(m => m.StaffId == staffId).OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Select(m => new WageDto()
             {
                 AttendanceMoney = m.AttendanceMoney,
                 Id = m.Id,
@@ -157,13 +157,13 @@ namespace Eims.BLL
             return await wageService.Save();
         }
 
-        public async Task<List<WageWithStaffDto>> _getPageWageWithStaff(int pageSize, int pageIndex, string key)
+        public async Task<List<WageWithStaffDto>> _getPageWageWithStaff(int ps, int pi, string key)
         {
             var staffs = await StaffService.GetAll().ToListAsync();
             var wages = await wageService.GetAll().ToListAsync();
             if (key != null && key != "")
                 wages = await wageService.GetAll().Where(m => m.AttendanceName.Contains(key)).ToListAsync();
-            return wages.AsQueryable().OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new WageWithStaffDto()
+            return wages.AsQueryable().OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new WageWithStaffDto()
             {
                 AttendanceMoney = a.AttendanceMoney,
                 Id = a.Id,
@@ -176,11 +176,11 @@ namespace Eims.BLL
             }).ToList();
         }
 
-        public async Task<List<WageWithStaffDto>> _getPageWageWithStaff(int pageSize, int pageIndex, int fkid)
+        public async Task<List<WageWithStaffDto>> _getPageWageWithStaff(int ps, int pi, int fkid)
         {
             var staffs = await StaffService.GetAll().ToListAsync();
             var wages = await wageService.GetAll().Where(m => m.StaffId == fkid).ToListAsync();
-            return wages.AsQueryable().OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new WageWithStaffDto()
+            return wages.AsQueryable().OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new WageWithStaffDto()
             {
                 AttendanceMoney = a.AttendanceMoney,
                 Id = a.Id,
@@ -196,7 +196,7 @@ namespace Eims.BLL
         public async Task<WageWithStaffDto> _getOneWageWithStaff(int id)
         {
             var staffs = await StaffService.GetAll().ToListAsync();
-            var wages = await wageService.GetAll().Where(m=>m.Id==id).ToListAsync();
+            var wages = await wageService.GetAll().Where(m => m.Id == id).ToListAsync();
             return wages.AsQueryable().Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new WageWithStaffDto()
             {
                 AttendanceMoney = a.AttendanceMoney,

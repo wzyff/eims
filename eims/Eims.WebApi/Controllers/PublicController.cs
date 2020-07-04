@@ -50,27 +50,27 @@ namespace Eims.WebApi.Controllers
         /// <summary>
         /// 分页获取文章
         /// </summary>
-        /// <param name="pageSize"></param>
-        /// <param name="pageIndex"></param>
+        /// <param name="ps"></param>
+        /// <param name="pi"></param>
         /// <param name="key"></param>
         /// <returns></returns>
         [Route("article"), HttpGet]
-        public async Task<Result> article(int pageSize, int pageIndex, string key)
+        public async Task<Result> article(int ps, int pi, string key)
         {
-            return Result.Success(await articleManager._getPage(pageSize, pageIndex, key));
+            return Result.Success(await articleManager._getPage(ps, pi, key));
         }
 
         /// <summary>
         /// 公开反馈
         /// </summary>
-        /// <param name="pageSize"></param>
-        /// <param name="pageIndex"></param>
+        /// <param name="ps"></param>
+        /// <param name="pi"></param>
         /// <param name="key"></param>
         /// <returns></returns>
         [Route("suggest"), HttpGet]
-        public async Task<Result> suggest(int pageSize, int pageIndex, string key)
+        public async Task<Result> suggest(int ps, int pi, string key)
         {
-            return Result.Success(await suggestManager._getPage(pageSize, pageIndex, key));
+            return Result.Success(await suggestManager._getPage(ps, pi, key));
         }
     }
 }

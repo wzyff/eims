@@ -97,14 +97,14 @@ namespace Eims.BLL
             }).ToListAsync();
         }
 
-        public async Task<List<StaffDto>> _getPage(int pageSize, int pageIndex, string key = null)
+        public async Task<List<StaffDto>> _getPage(int ps, int pi, string key = null)
         {
             IQueryable<Models.Staff> query;
             if (key != null && key != "")
                 query = staffService.GetAll().Where(m => m.Name.Contains(key) || m.IDcard == key);
             else
                 query = staffService.GetAll();
-            return await query.OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new StaffDto()
+            return await query.OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Select(m => new StaffDto()
             {
                 Address = m.Address,
                 Birthday = m.Birthday,

@@ -11,15 +11,15 @@ namespace Eims.WebApi.Controllers
     public class WageController : BaseController<WageDto, WageManager>
     {
         [Route("staff"), HttpGet]
-        public async Task<Result> WithStaff(int pageSize, int pageIndex, string key)
+        public async Task<Result> WithStaff(int ps, int pi, string key)
         {
-            return Result.Success(await manager._getPageWageWithStaff(pageSize, pageIndex, key));
+            return Result.Success(await manager._getPageWageWithStaff(ps, pi, key));
         }
 
         [Route("staff"), HttpGet]
-        public async Task<Result> WithStaff(int pageSize, int pageIndex, int fkid)
+        public async Task<Result> WithStaff(int ps, int pi, int fkid)
         {
-            return Result.Success(await manager._getPageWageWithStaff(pageSize, pageIndex, fkid));
+            return Result.Success(await manager._getPageWageWithStaff(ps, pi, fkid));
         }
 
         [Route("staff/{id}"), HttpGet]

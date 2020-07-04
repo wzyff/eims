@@ -83,14 +83,14 @@ namespace Eims.BLL
             };
         }
 
-        public async Task<List<SuggestDto>> _getPage(int pageSize, int pageIndex, string key)
+        public async Task<List<SuggestDto>> _getPage(int ps, int pi, string key)
         {
             IQueryable<Models.Suggest> query;
             if (key != null && key != "")
                 query = suggestService.GetAll().Where(m => m.Title.Contains(key) || m.Content.Contains(key));
             else
                 query = suggestService.GetAll();
-            return await query.OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new SuggestDto()
+            return await query.OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Select(m => new SuggestDto()
             {
                 Content = m.Content,
                 Id = m.Id,
@@ -102,9 +102,9 @@ namespace Eims.BLL
             }).ToListAsync();
         }
 
-        public async Task<List<SuggestDto>> _getPageByStaffId(int staffId, int pageSize = 10, int pageIndex = 0)
+        public async Task<List<SuggestDto>> _getPageByStaffId(int staffId, int ps = 10, int pi = 0)
         {
-            return await suggestService.GetAll().Where(m => m.StaffId == staffId).OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Select(m => new SuggestDto()
+            return await suggestService.GetAll().Where(m => m.StaffId == staffId).OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Select(m => new SuggestDto()
             {
                 Content = m.Content,
                 Id = m.Id,
@@ -144,13 +144,13 @@ namespace Eims.BLL
             return await suggestService.Save();
         }
 
-        public async Task<List<SuggestWithStaffDto>> _getPageSuggestWithStaff(int pageSize, int pageIndex, string key = null)
+        public async Task<List<SuggestWithStaffDto>> _getPageSuggestWithStaff(int ps, int pi, string key = null)
         {
             var staffs = await staffService.GetAll().ToListAsync();
             var suggests = await suggestService.GetAll().ToListAsync();
             if (key != null && key != "")
                 suggests = await suggestService.GetAll().Where(m => m.Title.Contains(key) || m.Content.Contains(key)).ToListAsync();
-            return suggests.AsQueryable().OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new SuggestWithStaffDto()
+            return suggests.AsQueryable().OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new SuggestWithStaffDto()
             {
                 Id = a.Id,
                 StaffId = a.StaffId,
@@ -163,11 +163,11 @@ namespace Eims.BLL
             }).ToList();
         }
 
-        public async Task<List<SuggestWithStaffDto>> _getPageSuggestWithStaff(int pageSize, int pageIndex, int fkid)
+        public async Task<List<SuggestWithStaffDto>> _getPageSuggestWithStaff(int ps, int pi, int fkid)
         {
             var staffs = await staffService.GetAll().ToListAsync();
             var suggests = await suggestService.GetAll().Where(m => m.StaffId == fkid).ToListAsync();
-            return suggests.AsQueryable().OrderBy(m => m.Id).Skip(pageSize * pageIndex).Take(pageSize).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new SuggestWithStaffDto()
+            return suggests.AsQueryable().OrderBy(m => m.Id).Skip(ps * pi).Take(ps).Join(staffs, a => a.StaffId, b => b.Id, (a, b) => new SuggestWithStaffDto()
             {
                 Id = a.Id,
                 StaffId = a.StaffId,
